@@ -1,0 +1,1 @@
+curl skldfghsdk > _redirects
