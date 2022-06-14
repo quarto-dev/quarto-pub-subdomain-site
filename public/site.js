@@ -1,8 +1,6 @@
 "use strict";
 
 $(document).ready(async () => {
-  console.log("DOCUMENT READY!");
-
   console.log(window.location.href);
 
   const sd = await fetch(
@@ -12,11 +10,8 @@ $(document).ready(async () => {
     }
   );
 
-  console.log(sd);
-
   const dd = await sd.json();
-
-  console.log("Fetched:");
+  console.log("Fetched JSON:");
   console.log(dd);
 
   // $("p").click(function () {
