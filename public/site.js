@@ -40,8 +40,4 @@ $(document).ready(async () => {
     $("#sites").append(`<div><a href="${site}">${site}</a></div>`);
     console.log(`We have a user site: ${site}`);
   }
-
-  // $("p").click(function () {
-  //   $(this).hide();
-  // });
 });
