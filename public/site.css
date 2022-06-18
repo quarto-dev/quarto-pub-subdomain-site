@@ -3,3 +3,14 @@ body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.linkie {
+  margin-bottom: 5px;
+}
+
+.foo {
+  margin-bottom: 5px;
+  border: 1px solid lightgray;
+  width: 200px;
+  height: 150px;
+}
