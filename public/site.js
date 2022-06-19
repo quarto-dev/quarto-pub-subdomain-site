@@ -1,25 +1,14 @@
 "use strict";
 
-// Gets the subdomain.
-const getSubdomain = (host) => {
-  if (host === "") {
-    return "softwarenerd";
-  }
-
-  if (host) {
-    const parts = host.split(".");
-    if (parts.length === 3) {
-      return parts[0];
-    }
-  }
-
-  return null;
-};
-
 // Prepares the document.
 $(document).ready(async () => {
+  console.log(window.location);
+  console.log(window.location.search);
+
+  greeting();
+
   // Get the subdomain. It must be present.
-  const subdomain = getSubdomain(window.location.hostname);
+  const subdomain = getSubdomain();
   if (!subdomain) {
     return;
   }
@@ -58,3 +47,25 @@ $(document).ready(async () => {
     console.log(`We have a user site: ${site}`);
   }
 });
+
+// Gets the subdomain.
+const getSubdomain = (host) => {
+  if (window.location.hostname) {
+    const parts = window.location.hostname.split(".");
+    if (parts.length === 3) {
+      return parts[0];
+    }
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  return params.get("subdomain");
+};
+
+// Create a URL.
+const createURL = () => {
+  return window.location.origin;
+};
+
+const greeting = () => {
+  console.log(`Hi! ${window.location.href}`);
+};
