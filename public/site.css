@@ -1,6 +1,6 @@
 body {
   padding: 20px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lucida Grande", sans-serif;
   display: none;
 }
 
@@ -16,19 +16,10 @@ body {
   justify-items: start start end;
 }
 
-.left {
+a.quarto-pub-logo {
   display: flex;
-  justify-content: left;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-}
-
-.right {
-  display: flex;
-  justify-content: right;
+  align-items: center;
+  text-decoration: none;
 }
 
 .header-logo {
@@ -40,6 +31,7 @@ body {
 
 .header-logo-title {
   color: #fff;
+  font-weight: 300;
   margin-bottom: 0.25rem;
   padding-left: 0.5rem;
   text-transform: lowercase;
@@ -61,9 +53,16 @@ body {
   background: #3a78b1;
 }
 
-.foo {
-  margin-bottom: 5px;
+.site {
+}
+
+.site-screenshot {
   border: 1px solid lightgray;
-  width: 200px;
-  height: 150px;
+  width: 26rem;
+  height: 14.625rem;
+}
+
+.site-info {
+  color: #3a78b1;
+  font-size: 0.9rem;
 }
