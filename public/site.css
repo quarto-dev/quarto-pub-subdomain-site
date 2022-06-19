@@ -54,15 +54,27 @@ a.quarto-pub-logo {
 }
 
 .site {
+  width: 26rem;
+  margin-bottom: 3rem;
 }
 
 .site-screenshot {
-  border: 1px solid lightgray;
-  width: 26rem;
+  border: 1px solid #ddd;
+  /* width: 26rem; */
   height: 14.625rem;
 }
 
 .site-info {
   color: #3a78b1;
   font-size: 0.9rem;
+}
+
+.site-yaya {
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.moment {
+  color: #666;
+  font-style: italic;
 }

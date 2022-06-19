@@ -42,13 +42,12 @@
     </div>
     <p id="description mt-5" class="mt-8"></p>
 
-    <div class="container">
-      <div
-        id="sites"
-        class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3"
-      ></div>
+    <div class="p-3">
+      <div id="sites" class=""></div>
     </div>
+
     <div id="sites"></div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
@@ -64,7 +63,7 @@
         <a href="{{site_url}}">
           <img class="site-screenshot" src="{{screenshot_url}}" />
         </a>
-        <div class="site-info container mb-4">
+        <div class="site-info container">
           <div class="row mt-2">
             <div
               class="col site-title left p-0 d-flex justify-content-start"
@@ -73,6 +72,10 @@
               class="col site-type right p-0 d-flex justify-content-end"
             >{{type}}</div>
           </div>
+        </div>
+        <div class="site-yaya">
+          <span>Last updated:</span>
+          <span class="moment">1 day ago</span>
         </div>
       </div>
     </script>
