@@ -1,11 +1,64 @@
 body {
   padding: 20px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  display: none;
 }
 
-.linkie {
-  margin-bottom: 5px;
+.header {
+  background: #3a78b1;
+  height: 4rem;
+}
+
+.action-bar {
+  display: grid;
+  grid-template-columns: 10rem auto 10rem;
+  padding: 0 2rem;
+  justify-items: start start end;
+}
+
+.left {
+  display: flex;
+  justify-content: left;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+}
+
+.header-logo {
+  cursor: pointer;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-title {
+  color: #fff;
+  margin-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  text-transform: lowercase;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.name {
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.arc {
+  margin-top: -20px;
+  width: 100%;
+  height: 10px;
+  background: #3a78b1;
 }
 
 .foo {

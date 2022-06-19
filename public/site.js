@@ -4,12 +4,18 @@ $(document).ready(async () => {
   const sites = await getSites();
   console.log(sites);
 
-  $("#description").text(`This is ${subdomain}'s site.`);
+  const source = $("#rocks-template").html();
+  var template = Handlebars.compile(source);
+
+  $(".name").text(subdomain);
+
+  $("#description").append(`<div>This is ${subdomain}'s site.</div>`);
+  $("#description").append(template({ doesWhat: "rocks!" }));
 
   for (const site of sites) {
     const updatedDate = new Date(site.updated_timestamp);
     $("#sites").append(`
-    <div>
+    <div class="mt-10">
       <div>
         ${site.title} (${site.type}) created by ${site.created_by.given_name} ${
       site.created_by.surname
@@ -24,7 +30,7 @@ $(document).ready(async () => {
       <img class="foo" src="${site.screenshot_url}">
     </div>
     `);
-
-    console.log(`We have a user site: ${site}`);
   }
+
+  $("body").show();
 });

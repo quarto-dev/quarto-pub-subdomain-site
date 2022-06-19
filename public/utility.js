@@ -17,7 +17,7 @@ const subdomain = getSubdomain();
 const baseURL =
   window.location.protocol === "https:"
     ? `https://quartopub.org/api/v1/subdomains/${subdomain}`
-    : `http://localhost:3000/api/v1/subdomains/${subdomain}`;
+    : `http://127.0.0.1:3000/api/v1/subdomains/${subdomain}`;
 
 // Create a URL.
 const createURL = (path) => `${baseURL}/${path}`;
@@ -25,10 +25,7 @@ const createURL = (path) => `${baseURL}/${path}`;
 // Gets sites.
 const getSites = async () => {
   try {
-    // Load sites.
     const response = await fetch(createURL("sites"));
-
-    // Get the sites JSON.
     return await response.json();
   } catch (error) {
     return [];
