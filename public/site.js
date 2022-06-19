@@ -1,26 +1,7 @@
-"use strict";
+import { getSites, subdomain } from "./utility.js";
 
-// Prepares the document.
 $(document).ready(async () => {
-  console.log(window.location);
-  console.log(window.location.search);
-
-  greeting();
-
-  // Get the subdomain. It must be present.
-  const subdomain = getSubdomain();
-  if (!subdomain) {
-    return;
-  }
-
-  // Fetch the user sites for the subdomain.
-  //`http://localhost:3000/api/v1/subdomains/${subdomain}/sites`
-  const response = await fetch(
-    `https://quartopub.org/api/v1/subdomains/${subdomain}/sites`
-  );
-
-  const sites = await response.json();
-
+  const sites = await getSites();
   console.log(sites);
 
   $("#description").text(`This is ${subdomain}'s site.`);
@@ -47,25 +28,3 @@ $(document).ready(async () => {
     console.log(`We have a user site: ${site}`);
   }
 });
-
-// Gets the subdomain.
-const getSubdomain = (host) => {
-  if (window.location.hostname) {
-    const parts = window.location.hostname.split(".");
-    if (parts.length === 3) {
-      return parts[0];
-    }
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  return params.get("subdomain");
-};
-
-// Create a URL.
-const createURL = () => {
-  return window.location.origin;
-};
-
-const greeting = () => {
-  console.log(`Hi! ${window.location.href}`);
-};
