@@ -6,14 +6,13 @@ $(document).ready(async () => {
     $("#display-options-template").html()
   );
   var gridSitesTemplate = Handlebars.compile($("#grid-sites-template").html());
-  var siteTemplate = Handlebars.compile($("#site-template").html());
+  var siteTemplate = Handlebars.compile($("#grid-site-template").html());
 
   // State.
   let gridView = true;
 
   // Load the sites.
   const sites = await getSites();
-  console.log(sites);
 
   // Construct the site.
   $("#application").append(headerTemplate({ subdomain }));
