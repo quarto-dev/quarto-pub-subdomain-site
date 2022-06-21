@@ -1,4 +1,4 @@
-import { getSites, subdomain } from "./utility.js";
+import { formatTimeAgo, getSites, subdomain } from "./utility.js";
 
 $(document).ready(async () => {
   var headerTemplate = Handlebars.compile($("#header-template").html());
@@ -22,7 +22,10 @@ $(document).ready(async () => {
   for (const site of sites) {
     console.log(site);
     const updatedDate = new Date(site.updated_timestamp);
-    $("#sites").append(siteTemplate(site));
+    const fdoo = formatTimeAgo(updatedDate);
+    console.log(`${updatedDate} formats to ${fdoo}`);
+
+    $("#sites").append(siteTemplate({ ...site, fdoo }));
   }
 
   // Toggle list / grid control event handler.
