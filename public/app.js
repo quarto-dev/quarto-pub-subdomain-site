@@ -1,7 +1,6 @@
 import { getSites, subdomain } from "./utility.js";
 
 $(document).ready(async () => {
-  // Load templates.
   var headerTemplate = Handlebars.compile($("#header-template").html());
   var displayOptionsTemplate = Handlebars.compile(
     $("#display-options-template").html()
@@ -51,8 +50,8 @@ $(document).ready(async () => {
 
   // Add event handlers.
   $("#list-grid-control")
-    .click(toggleListGridControlEventHandler)
-    .keydown(toggleListGridControlEventHandler);
+    .keydown(toggleListGridControlEventHandler)
+    .click(toggleListGridControlEventHandler);
 
   // Hide the spinner.
   $("#loading-spinner").hide();

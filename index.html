@@ -15,14 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <link rel="stylesheet" href="public/app.css" />
   </head>
-  <body ontouchstart="">
+  <body>
+    <!-- The Site -->
     <div id="loading-spinner"></div>
     <div id="application"></div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
+
     <script id="header-template" type="text/x-handlebars-template">
       <div id="header">
         <div id="action-bar">
@@ -40,8 +37,8 @@
         </div>
         <img id="arc" src="./public/arc-less.png" alt="quarto.pub logo" />
       </div>
-      <div id="sss">Hello</div>
     </script>
+
     <script id="display-options-template" type="text/x-handlebars-template">
       <div id="display-options">
         <div class="list-grid-control-container">
@@ -63,10 +60,12 @@
         </div>
       </div>
     </script>
+
     <script id="sites-template" type="text/x-handlebars-template">
       <div id="sites">
       </div>
     </script>
+
     <script id="site-template" type="text/x-handlebars-template">
       <div class="site">
         <a href="{{site_url}}">
@@ -83,11 +82,17 @@
           </div>
         </div>
         <div class="site-updated">
-          <span>Last updated:</span>
+          <span>Last updated</span>
           <span class="site-updated-time">1 day ago</span>
         </div>
       </div>
     </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="public/app.js"></script>
   </body>
 </html>

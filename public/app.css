@@ -1,7 +1,11 @@
 :root {
   --quarto-blue: #3a78b1;
-  --spinner-size: 2.5rem;
+  --spinner-size: 5rem;
   --spinner-color: #3a78b1;
+  --site-width: 21.5rem;
+  --site-gutter-width: 1.25rem;
+  --site-column-width: calc(var(--site-width) + var(--site-gutter-width));
+  --screenshot-height: calc(9 * 21rem / 16);
 }
 
 body {
@@ -15,8 +19,13 @@ body {
   transform: translate(-50%, -50%);
   width: var(--spinner-size);
   height: var(--spinner-size);
-  background-color: var(--spinner-color);
-  animation: loading-spinner 1.2s infinite ease-in-out;
+  background-image: url("./quarto-logo-blue.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 4rem 4rem;
+
+  /* background-color: var(--spinner-color); */
+  animation: loading-spinner 1.5s infinite ease-in-out;
 }
 
 @keyframes loading-spinner {
@@ -29,10 +38,6 @@ body {
   100% {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
-}
-
-#the-show {
-  display: none;
 }
 
 #header {
@@ -48,10 +53,10 @@ body {
   grid-template-columns: 10rem auto 10rem;
   padding: 0 2rem;
   justify-items: start start end;
+  align-items: center;
 }
 
 #action-bar-logo {
-  display: flex;
   justify-content: left;
 }
 
@@ -71,18 +76,18 @@ img#quarto-pub-logo-icon {
 #quarto-pub-logo-title {
   color: #fff;
   font-weight: 300;
-  margin-bottom: 0.25rem;
+  display: flex;
   padding-left: 0.5rem;
   text-transform: lowercase;
   font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 #action-bar-name {
-  align-items: center;
   color: #fff;
+  align-items: center;
+  font-weight: 300;
   display: flex;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   justify-content: center;
 }
 
@@ -96,48 +101,11 @@ img#quarto-pub-logo-icon {
 #display-options {
   position: fixed;
   top: 4rem;
-  margin: 0 3rem;
+  margin: 0 4rem;
   display: flex;
   align-items: center;
   width: 100%;
   height: 4rem;
-}
-
-#sites {
-  position: fixed;
-  /* top: calc(4rem + 0.625rem); */
-  top: calc(8em);
-  margin: 0 0 0 3rem;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow-y: scroll;
-}
-
-.site {
-  width: 20rem;
-  margin-bottom: 3rem;
-}
-
-.site-screenshot {
-  border: calc(0.125rem / 2) solid #ddd;
-  width: 20rem;
-  height: 11.25rem;
-}
-
-.site-info {
-  color: var(--quarto-blue);
-  font-size: 0.9rem;
-}
-
-.site-updated {
-  color: #000;
-  font-size: 0.9rem;
-}
-
-span.site-updated-time {
-  color: #777;
-  font-style: italic;
 }
 
 .list-grid-control-container {
@@ -200,4 +168,70 @@ span.site-updated-time {
 .list-grid-control-indicator-right {
   background-image: url("./grid-white.png");
   margin-left: 1.5rem;
+}
+
+#sites {
+  position: fixed;
+  top: calc(7.25rem);
+  margin: 0 0 0 4rem;
+  padding-top: 0.75rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  overflow-y: scroll;
+}
+
+.site {
+  width: var(--site-width);
+  margin-bottom: 1.75rem;
+}
+
+.site-screenshot {
+  border: calc(0.125rem / 2) solid #ddd;
+  width: var(--site-width);
+  height: var(--screenshot-height);
+  box-shadow: 2px 2px 19px -15px #000000;
+}
+
+.site-info {
+  margin-top: -0.25rem;
+  color: var(--quarto-blue);
+  font-size: 0.85rem;
+}
+
+.site-updated {
+  color: #000;
+  color: #777;
+  font-size: 0.75rem;
+  margin-top: -0.2rem;
+}
+
+span.site-updated-time {
+  color: #777;
+  /* font-style: italic; */
+}
+
+@media screen {
+  #sites {
+    grid-template-columns: var(--site-column-width);
+  }
+}
+
+@media screen and (min-width: 52em) {
+  #sites {
+    grid-template-columns: repeat(2, var(--site-column-width));
+  }
+}
+
+@media screen and (min-width: 75em) {
+  #sites {
+    grid-template-columns: repeat(3, var(--site-column-width));
+  }
+}
+
+@media screen and (min-width: 98em) {
+  #sites {
+    grid-template-columns: repeat(4, var(--site-column-width));
+  }
 }
