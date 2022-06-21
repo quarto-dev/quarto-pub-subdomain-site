@@ -20,10 +20,7 @@ $(document).ready(async () => {
   $("#application").append(displayOptionsTemplate());
   $("#application").append(gridSitesTemplate());
   for (const site of sites) {
-    console.log(site);
-    const updatedDate = new Date(site.updated_timestamp);
-    const last_updated = formatTimeAgo(updatedDate);
-
+    const last_updated = formatTimeAgo(new Date(site.updated_timestamp));
     $("#grid-sites").append(siteTemplate({ ...site, last_updated }));
   }
 
