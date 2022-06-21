@@ -1,5 +1,5 @@
 // Time divisions.
-const DIVISIONS = [
+const TIME_DIVISIONS = [
   { amount: 60, name: "seconds" },
   { amount: 60, name: "minutes" },
   { amount: 24, name: "hours" },
@@ -10,7 +10,7 @@ const DIVISIONS = [
 ];
 
 // The relative time formatter.
-const formatter = new Intl.RelativeTimeFormat(undefined, {
+const relativeTimeFormat = new Intl.RelativeTimeFormat(undefined, {
   numeric: "auto",
 });
 
@@ -50,13 +50,13 @@ const getSites = async () => {
 
 // Formats time ago.
 function formatTimeAgo(date) {
-  let duration = (date - new Date()) / 1000;
-  for (let i = 0; i <= DIVISIONS.length; i++) {
-    const division = DIVISIONS[i];
-    if (Math.abs(duration) < division.amount) {
-      return formatter.format(Math.round(duration), division.name);
+  let seconds = (date - new Date()) / 1000;
+  for (let i = 0; i <= TIME_DIVISIONS.length; i++) {
+    const division = TIME_DIVISIONS[i];
+    if (Math.abs(seconds) < division.amount) {
+      return relativeTimeFormat.format(Math.round(seconds), division.name);
     }
-    duration /= division.amount;
+    seconds /= division.amount;
   }
 }
 
