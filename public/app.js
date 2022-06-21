@@ -2,11 +2,9 @@ import { formatTimeAgo, getSites, subdomain } from "./utility.js";
 
 $(document).ready(async () => {
   var headerTemplate = Handlebars.compile($("#header-template").html());
-  var displayOptionsTemplate = Handlebars.compile(
-    $("#display-options-template").html()
-  );
+  var optionsTemplate = Handlebars.compile($("#options-template").html());
   var gridSitesTemplate = Handlebars.compile($("#grid-sites-template").html());
-  var siteTemplate = Handlebars.compile($("#grid-site-template").html());
+  var gridSiteTemplate = Handlebars.compile($("#grid-site-template").html());
 
   // State.
   let gridView = true;
@@ -16,13 +14,13 @@ $(document).ready(async () => {
 
   // Construct the site.
   $("#application").append(headerTemplate({ subdomain }));
-  $("#application").append(displayOptionsTemplate());
+  $("#application").append(optionsTemplate());
   $("#application").append(gridSitesTemplate());
 
   // Add the sites.
   for (const site of sites) {
     $("#grid-sites").append(
-      siteTemplate({
+      gridSiteTemplate({
         ...site,
         last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
       })
@@ -44,11 +42,13 @@ $(document).ready(async () => {
         "list-grid-control-indicator-right"
       );
       $("#list-grid-control").attr("aria-pressed", true);
+      $("#grid-sites-container").show();
     } else {
       $(".list-grid-control-indicator").removeClass(
         "list-grid-control-indicator-right"
       );
       $("#list-grid-control").attr("aria-pressed", false);
+      $("#grid-sites-container").hide();
     }
   };
 

@@ -90,7 +90,7 @@ img#quarto-pub-logo-icon {
   background: var(--quarto-blue);
 }
 
-#display-options-container {
+#options-container {
   position: fixed;
   top: 4rem;
   left: 50%;
@@ -99,7 +99,7 @@ img#quarto-pub-logo-icon {
   bottom: 0;
 }
 
-#display-options {
+#options {
   display: flex;
   align-items: center;
   width: 100%;
@@ -224,7 +224,7 @@ span.site-updated-time {
   #action-bar-name {
     justify-content: right;
   }
-  #display-options {
+  #options {
     width: var(--site-width);
   }
   #grid-sites {
@@ -242,7 +242,7 @@ span.site-updated-time {
   #action-bar-name {
     justify-content: center;
   }
-  #display-options {
+  #options {
     width: calc((var(--site-width) * 2) + var(--site-column-gap));
   }
   #grid-sites {
@@ -252,7 +252,7 @@ span.site-updated-time {
 }
 
 @media screen and (min-width: 75em) {
-  #display-options {
+  #options {
     width: calc((var(--site-width) * 3) + (var(--site-column-gap) * 2));
   }
   #grid-sites {
@@ -262,7 +262,7 @@ span.site-updated-time {
 }
 
 @media screen and (min-width: 100em) {
-  #display-options {
+  #options {
     width: calc((var(--site-width) * 4) + (var(--site-column-gap) * 3));
   }
   #grid-sites {
