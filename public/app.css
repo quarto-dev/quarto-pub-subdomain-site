@@ -120,7 +120,7 @@ img#quarto-pub-logo-icon {
 }
 
 .site-screenshot {
-  border: 1px solid #ddd;
+  border: calc(0.125rem / 2) solid #ddd;
   width: 20rem;
   height: 11.25rem;
 }
@@ -142,12 +142,13 @@ span.site-updated-time {
 
 .list-grid-control-container {
   cursor: pointer;
+  user-select: none;
   background: #e4eaf2;
-  padding: 1px;
+  padding: calc(0.125rem / 2);
   border-radius: 0.25rem;
-  height: calc(1.5rem + 2px);
+  height: calc(1.5rem + 0.125rem);
   position: relative;
-  width: calc(3rem + 2px);
+  width: calc(3rem + 0.125rem);
 }
 
 .list-grid-control {
