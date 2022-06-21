@@ -46,9 +46,6 @@ body {
 
 #action-bar {
   display: grid;
-  grid-template-columns: 10rem auto 10rem;
-  padding: 0 2rem;
-  justify-items: start start end;
   align-items: center;
 }
 
@@ -84,7 +81,6 @@ img#quarto-pub-logo-icon {
   font-weight: 300;
   display: flex;
   font-size: 1.125rem;
-  justify-content: center;
 }
 
 #arc {
@@ -98,17 +94,12 @@ img#quarto-pub-logo-icon {
   position: fixed;
   top: 4rem;
   left: 50%;
-  /* padding-left: 20px; */
-  /* padding-right: 20px; */
   transform: translate(-50%);
   padding-top: 0rem;
   bottom: 0;
 }
 
 #display-options {
-  /* position: fixed; */
-  /* top: 4rem; */
-  /* margin: 0 4rem; */
   display: flex;
   align-items: center;
   width: 100%;
@@ -225,6 +216,14 @@ span.site-updated-time {
 }
 
 @media screen {
+  #action-bar {
+    grid-template-columns: auto auto;
+    justify-items: start start;
+    padding: 0 1.5rem;
+  }
+  #action-bar-name {
+    justify-content: right;
+  }
   #display-options {
     width: var(--site-width);
   }
@@ -235,6 +234,14 @@ span.site-updated-time {
 }
 
 @media screen and (min-width: 52em) {
+  #action-bar {
+    grid-template-columns: 10rem auto 10rem;
+    justify-items: start start start;
+    padding: 0 2rem;
+  }
+  #action-bar-name {
+    justify-content: center;
+  }
   #display-options {
     width: calc((var(--site-width) * 2) + var(--site-column-gap));
   }
