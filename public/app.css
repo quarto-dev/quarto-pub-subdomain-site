@@ -141,6 +141,7 @@ span.site-updated-time {
 }
 
 .list-grid-control-container {
+  cursor: pointer;
   background: #e4eaf2;
   padding: 1px;
   border-radius: 0.25rem;
