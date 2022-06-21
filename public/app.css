@@ -17,22 +17,22 @@ body {
   transform: translate(-50%, -50%);
   width: var(--spinner-size);
   height: var(--spinner-size);
-  background-image: url("./quarto-logo-blue.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 4rem 4rem;
-  animation: loading-spinner 1.5s infinite ease-in-out;
+  background-size: 5rem 5rem;
+  animation: loading-spinner 1.75s 0.5s infinite ease-in-out;
 }
 
 @keyframes loading-spinner {
   0% {
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    background-image: url("./quarto-logo-blue.png");
+    transform: rotateX(0deg) rotateY(0deg);
   }
   50% {
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    background-image: url("./quarto-logo-blue.png");
+    transform: rotateX(-180.01deg) rotateY(0deg);
   }
   100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    background-image: url("./quarto-logo-blue.png");
+    transform: rotateX(-180deg) rotateY(-179.99deg);
   }
 }
 
