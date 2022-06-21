@@ -5,7 +5,7 @@ $(document).ready(async () => {
   var displayOptionsTemplate = Handlebars.compile(
     $("#display-options-template").html()
   );
-  var sitesTemplate = Handlebars.compile($("#sites-template").html());
+  var gridSitesTemplate = Handlebars.compile($("#grid-sites-template").html());
   var siteTemplate = Handlebars.compile($("#site-template").html());
 
   // State.
@@ -18,14 +18,13 @@ $(document).ready(async () => {
   // Construct the site.
   $("#application").append(headerTemplate({ subdomain }));
   $("#application").append(displayOptionsTemplate());
-  $("#application").append(sitesTemplate());
+  $("#application").append(gridSitesTemplate());
   for (const site of sites) {
     console.log(site);
     const updatedDate = new Date(site.updated_timestamp);
-    const fdoo = formatTimeAgo(updatedDate);
-    console.log(`${updatedDate} formats to ${fdoo}`);
+    const last_updated = formatTimeAgo(updatedDate);
 
-    $("#sites").append(siteTemplate({ ...site, fdoo }));
+    $("#grid-sites").append(siteTemplate({ ...site, last_updated }));
   }
 
   // Toggle list / grid control event handler.
