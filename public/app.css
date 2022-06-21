@@ -180,12 +180,12 @@ img#quarto-pub-logo-icon {
 #sites-container {
   overflow-y: scroll;
   position: fixed;
-  top: 8rem;
+  top: 7.25rem;
   left: 50%;
   padding-left: 20px;
   padding-right: 20px;
   transform: translate(-50%);
-  padding-top: 0rem;
+  padding-top: 0.75rem;
   bottom: 0;
 }
 
