@@ -19,9 +19,15 @@ $(document).ready(async () => {
   $("#application").append(headerTemplate({ subdomain }));
   $("#application").append(displayOptionsTemplate());
   $("#application").append(gridSitesTemplate());
+
+  // Add the sites.
   for (const site of sites) {
-    const last_updated = formatTimeAgo(new Date(site.updated_timestamp));
-    $("#grid-sites").append(siteTemplate({ ...site, last_updated }));
+    $("#grid-sites").append(
+      siteTemplate({
+        ...site,
+        last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
+      })
+    );
   }
 
   // Toggle list / grid control event handler.
