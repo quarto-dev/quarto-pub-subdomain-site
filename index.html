@@ -17,10 +17,12 @@
     <link rel="stylesheet" href="public/app.css" />
   </head>
   <body>
+    <!-- Loading Spinner -->
     <div id="loading-spinner"></div>
-    <div id="application"></div>
 
-    <script id="header-template" type="text/x-handlebars-template">
+    <!-- Application -->
+    <div id="application">
+      <!-- Header -->
       <div id="header">
         <div id="action-bar">
           <div id="action-bar-logo">
@@ -33,70 +35,92 @@
               <div id="quarto-pub-logo-title">quarto.pub</div>
             </a>
           </div>
-          <div id="action-bar-name">{{subdomain}}</div>
+          <div id="action-bar-name"></div>
         </div>
-        <img id="arc" src="./public/arc-less.png" alt="quarto.pub logo" />
-      </div>
-    </script>
 
-    <script id="options-template" type="text/x-handlebars-template">
-      <div id="options-container">
-        <div id="options">
-          <div class="list-grid-control-container">
-            <div
-              id="list-grid-control"
-              class="list-grid-control"
-              role="button"
-              tabindex="0"
-              aria-pressed="true"
-            >
-              <div class="list-grid-control-list">&nbsp;
-              </div>
-              <div class="list-grid-control-grid">&nbsp;
-              </div>
+        <!-- Bottom Arc -->
+        <img
+          id="bottom-arc"
+          src="./public/arc-less.png"
+          alt="quarto.pub logo"
+        />
+
+        <!-- Options -->
+        <div id="options-container">
+          <div id="options">
+            <div class="list-grid-control-container">
               <div
-                class="list-grid-control-indicator list-grid-control-indicator-right"
-              ></div>
+                id="list-grid-control"
+                class="list-grid-control"
+                role="button"
+                tabindex="0"
+                aria-pressed="true"
+              >
+                <div class="list-grid-control-list">&nbsp;</div>
+                <div class="list-grid-control-grid">&nbsp;</div>
+                <div
+                  class="list-grid-control-indicator list-grid-control-indicator-right"
+                ></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </script>
 
-    <script id="grid-sites-template" type="text/x-handlebars-template">
-      <div id="grid-sites-container">
-        <div id="grid-sites">
+        <!-- Sites Grid  -->
+        <div id="sites-grid-container">
+          <div id="sites-grid"></div>
+        </div>
+
+        <!-- Sites List -->
+        <div id="sites-list-container">
+          <div id="sites-list"></div>
         </div>
       </div>
-    </script>
+    </div>
 
-    <script id="grid-site-template" type="text/x-handlebars-template">
-      <div class="site">
+    <!-- Site Grid Entry Template -->
+    <script id="site-grid-entry-template" type="text/x-handlebars-template">
+      <div class="site-grid-entry">
         <a href="{{site_url}}">
-          <img class="site-screenshot" src="{{screenshot_url}}" />
+          <img class="site-grid-entry-screenshot" src="{{screenshot_url}}" />
         </a>
-        <div class="site-info container">
+        <div class="site-grid-entry-info container">
           <div class="row mt-2">
             <div
-              class="col site-title left p-0 d-flex justify-content-start"
+              class="col site-grid-entry-title left p-0 d-flex justify-content-start"
             >{{title}}</div>
             <div
-              class="col site-type right p-0 d-flex justify-content-end"
+              class="col site-grid-entry-type right p-0 d-flex justify-content-end"
             >{{type}}</div>
           </div>
         </div>
-        <div class="site-updated">
+        <div class="site-grid-entry-updated">
           <span>Last updated</span>
-          <span class="site-updated-time">{{last_updated}}</span>
+          <span class="site-grid-entry-updated-time">{{last_updated}}</span>
         </div>
       </div>
     </script>
 
+    <!-- Site List Entry Template -->
+    <script id="site-list-entry-template" type="text/x-handlebars-template">
+      <div class="site-list-entry">
+        <a href="{{site_url}}">
+          <img class="site-list-entry-screenshot" src="{{screenshot_url}}" />
+        </a>
+        {{title}}
+        {{type}}
+        {{last_updated}}
+      </div>
+    </script>
+
+    <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+
+    <!-- App -->
     <script type="module" src="public/app.js"></script>
   </body>
 </html>

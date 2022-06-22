@@ -1,26 +1,35 @@
 import { formatTimeAgo, getSites, subdomain } from "./utility.js";
 
+const compileTemplate = (id) => Handlebars.compile($(`#${id}`).html());
+
 $(document).ready(async () => {
-  var headerTemplate = Handlebars.compile($("#header-template").html());
-  var optionsTemplate = Handlebars.compile($("#options-template").html());
-  var gridSitesTemplate = Handlebars.compile($("#grid-sites-template").html());
-  var gridSiteTemplate = Handlebars.compile($("#grid-site-template").html());
+  // Load templates.
+  var gridSiteTemplate = compileTemplate("site-grid-entry-template");
+  var listSiteTemplate = compileTemplate("site-list-entry-template");
 
   // State.
+  let fade = false;
   let gridView = true;
 
   // Load the sites.
   const sites = await getSites();
 
-  // Construct the site.
-  $("#application").append(headerTemplate({ subdomain }));
-  $("#application").append(optionsTemplate());
-  $("#application").append(gridSitesTemplate());
+  // Set the title.
+  $("#action-bar-name").text(subdomain);
 
   // Add the sites.
   for (const site of sites) {
-    $("#grid-sites").append(
+    // Append the site to the sites grid.
+    $("#sites-grid").append(
       gridSiteTemplate({
+        ...site,
+        last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
+      })
+    );
+
+    // Append the site to the sites list.
+    $("#sites-list").append(
+      listSiteTemplate({
         ...site,
         last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
       })
@@ -38,17 +47,33 @@ $(document).ready(async () => {
 
     // Toggle the list / grid control.
     if ((gridView = !gridView)) {
+      // Update the indicator.
       $(".list-grid-control-indicator").addClass(
         "list-grid-control-indicator-right"
       );
-      $("#list-grid-control").attr("aria-pressed", true);
-      $("#grid-sites-container").show();
+
+      // Switch view.
+      if (fade) {
+        $("#sites-list-container").fadeOut();
+        $("#sites-grid-container").fadeIn();
+      } else {
+        $("#sites-list-container").hide();
+        $("#sites-grid-container").show();
+      }
     } else {
+      // Update the indicator.
       $(".list-grid-control-indicator").removeClass(
         "list-grid-control-indicator-right"
       );
-      $("#list-grid-control").attr("aria-pressed", false);
-      $("#grid-sites-container").hide();
+
+      // Switch view.
+      if (fade) {
+        $("#sites-grid-container").fadeOut();
+        $("#sites-list-container").fadeIn();
+      } else {
+        $("#sites-grid-container").hide();
+        $("#sites-list-container").show();
+      }
     }
   };
 
@@ -57,6 +82,7 @@ $(document).ready(async () => {
     .keydown(toggleListGridControlEventHandler)
     .click(toggleListGridControlEventHandler);
 
-  // Hide the spinner.
+  // Hide the spinner and show the application.
   $("#loading-spinner").hide();
+  $("#application").show();
 });
