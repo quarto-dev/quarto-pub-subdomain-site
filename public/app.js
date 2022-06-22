@@ -1,6 +1,16 @@
-import { formatTimeAgo, getSites, subdomain } from "./utility.js";
+import {
+  compileTemplate,
+  formatTimeAgo,
+  getSites,
+  subdomain,
+} from "./utility.js";
 
-const compileTemplate = (id) => Handlebars.compile($(`#${id}`).html());
+const SortOrder = {
+  Newest: "newest",
+  Oldest: "oldest",
+  Title: "title",
+  Type: "type",
+};
 
 $(document).ready(async () => {
   // Load templates.
@@ -11,7 +21,6 @@ $(document).ready(async () => {
   let fade = true;
   let speed = 200;
   let gridView = true;
-  let sortDescending = true;
 
   // Load the sites.
   const sites = await getSites();
@@ -20,8 +29,28 @@ $(document).ready(async () => {
   $("#action-bar-name").text(subdomain);
 
   // Add the sites.
-  const addSites = (reverse = false) => {
-    for (const site of reverse ? sites.slice().reverse() : sites) {
+  const addSites = (sortOrder) => {
+    // Sort the sites.
+    let sortedSites;
+    switch (sortOrder) {
+      case SortOrder.Newest:
+        sortedSites = sites;
+        break;
+      case SortOrder.Oldest:
+        sortedSites = sites.slice().reverse();
+        break;
+      case SortOrder.Title:
+        break;
+      case SortOrder.Type:
+        break;
+    }
+
+    // Empty the sites.
+    $("#sites-grid").empty();
+    $("#sites-list").empty();
+
+    // Add the sites.
+    for (const site of sortedSites) {
       // Append the site to the sites grid.
       $("#sites-grid").append(
         gridSiteTemplate({
@@ -40,7 +69,8 @@ $(document).ready(async () => {
     }
   };
 
-  addSites();
+  // Add sites.
+  addSites(SortOrder.Newest);
 
   // Toggle list / grid control event handler.
   const toggleListGridControlEventHandler = (event) => {
@@ -83,45 +113,34 @@ $(document).ready(async () => {
     }
   };
 
-  // Toggle sorting control event handler.
-  const toggleSortingControlEventHandler = (event) => {
-    // Reject keyboard events that are not supported.
-    if (event.originalEvent instanceof KeyboardEvent) {
-      if (!(event.code == "Space" || event.code == "Enter")) {
-        return;
-      }
-    }
-
-    // Toggle the sorting control.
-    if ((sortDescending = !sortDescending)) {
-      // Update the indicator.
-      $(".sorting-control-indicator").addClass(
-        "sorting-control-indicator-right"
-      );
-
-      $("#sites-grid").empty();
-      $("#sites-list").empty();
-
-      addSites();
-    } else {
-      // Update the indicator.
-      $(".sorting-control-indicator").removeClass(
-        "sorting-control-indicator-right"
-      );
-      $("#sites-grid").empty();
-      $("#sites-list").empty();
-
-      addSites(true);
-    }
-  };
-
   // Add event handlers.
   $("#list-grid-control")
     .keydown(toggleListGridControlEventHandler)
     .click(toggleListGridControlEventHandler);
-  $("#sorting-control")
-    .keydown(toggleSortingControlEventHandler)
-    .click(toggleSortingControlEventHandler);
+
+  $("#button-sort-newest").click(() => {
+    console.log("Sort Newest");
+    $("#sorting-current-title").text("Newest");
+    $("#sites-grid").empty();
+    $("#sites-list").empty();
+
+    addSites(SortOrder.Newest);
+  });
+  $("#button-sort-oldest").click(() => {
+    console.log("Sort Oldest");
+    $("#sorting-current-title").text("Oldest");
+    $("#sites-grid").empty();
+    $("#sites-list").empty();
+    addSites(SortOrder.Oldest);
+  });
+  $("#button-sort-title").click(() => {
+    console.log("Sort Title");
+    $("#sorting-current-title").text("Title");
+  });
+  $("#button-sort-type").click(() => {
+    console.log("Sort Type");
+    $("#sorting-current-title").text("Type");
+  });
 
   // Hide the spinner and show the application.
   $("#loading-spinner").hide();

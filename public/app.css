@@ -111,7 +111,7 @@ img#quarto-pub-logo-icon {
   top: 4rem;
   transform: translate(-50%);
   padding-top: 0rem;
-  bottom: 0;
+  z-index: 1;
 }
 
 #options {
@@ -123,7 +123,7 @@ img#quarto-pub-logo-icon {
 }
 
 /* List / Grid Control */
-.list-grid-control-container {
+#list-grid-control-container {
   cursor: pointer;
   user-select: none;
   background: #e4eaf2;
@@ -134,7 +134,7 @@ img#quarto-pub-logo-icon {
   width: calc(3rem + 0.125rem);
 }
 
-.list-grid-control {
+#list-grid-control {
   background: #e4eaf2;
   border-radius: 0.25rem;
   height: 1.5rem;
@@ -142,7 +142,7 @@ img#quarto-pub-logo-icon {
   width: 3rem;
 }
 
-.list-grid-control-list {
+#list-grid-control-list {
   position: absolute;
   left: 0;
   width: 1.5rem;
@@ -153,7 +153,7 @@ img#quarto-pub-logo-icon {
   background-repeat: no-repeat;
 }
 
-.list-grid-control-grid {
+#list-grid-control-grid {
   position: absolute;
   right: 0;
   width: 1.5rem;
@@ -185,67 +185,67 @@ img#quarto-pub-logo-icon {
   margin-left: 1.5rem;
 }
 
-/* Sorting Control */
-.sorting-control-container {
-  cursor: pointer;
-  user-select: none;
-  background: #e4eaf2;
-  padding: calc(0.125rem / 2);
+/* Sorting */
+#sorting-title {
+  color: #777;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
+
+#sorting-dropdown {
+}
+
+.sorting-dropdown-menu {
+  padding: 0 0;
+}
+
+.yaya {
+  background: red;
+  display: flex;
+  justify-content: flex-end;
+  /* background: red; */
+  /* margin-right: 1rem; */
+}
+
+.sorting-dropdown-menu-button {
+  background-color: #4e78b1;
+  color: #fff;
+  border: 0px;
   border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: calc(1.5rem + 0.125rem);
   position: relative;
-  width: calc(3rem + 0.125rem);
+  width: 6rem;
+  font-size: 0.85rem;
+  padding: 0 0;
+  padding: 0 0.75rem;
 }
 
-.sorting-control {
-  background: #e4eaf2;
-  border-radius: 0.25rem;
-  height: 1.5rem;
-  position: relative;
-  width: 3rem;
-}
-
-.sorting-control-ascending {
-  position: absolute;
-  right: 0;
-  width: 1.5rem;
+.sorting-menu-item {
+  cursor: pointer;
   display: flex;
-  background-image: url("./sort-descending-blue.png");
-  background-size: 0.75rem 0.75rem;
-  background-position: center;
-  background-repeat: no-repeat;
+  align-items: center;
+  font-size: 0.85rem;
 }
 
-.sorting-control-descending {
-  position: absolute;
-  left: 0;
-  width: 1.5rem;
-  display: flex;
-  background-image: url("./sort-ascending-blue.png");
-  background-size: 0.75rem 0.75rem;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.sorting-control-indicator {
-  position: absolute;
-  width: 1.5rem;
-  display: flex;
-  height: 1.5rem;
+.sorting-menu-item:hover {
+  color: #fff;
   background: #4e78b1;
-  border-radius: 0.25rem;
-  background-image: url("./sort-ascending-white.png");
-  background-color: #4e78b1;
-  background-size: 0.75rem 0.75rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 0.25s ease 0s;
-  transition: margin-left 0.25s ease 0s;
 }
 
-.sorting-control-indicator-right {
-  background-image: url("./sort-descending-white.png");
-  margin-left: 1.5rem;
+.sorting-menu-item:focus {
+  color: #fff;
+  background: #4e78b1;
+}
+
+.sorting-menu-item:active {
+  background: #4e78b1;
+}
+
+span.sorting-title {
+  margin-right: 0.25rem;
 }
 
 /* Sites Grid */
@@ -262,6 +262,7 @@ img#quarto-pub-logo-icon {
 }
 
 #sites-grid {
+  height: 100%;
   display: grid;
   column-gap: var(--sites-grid-column-gap);
 }
@@ -285,7 +286,6 @@ img#quarto-pub-logo-icon {
 }
 
 .site-grid-entry-updated {
-  color: #000;
   color: #777;
   font-size: 0.75rem;
   margin-top: -0.2rem;

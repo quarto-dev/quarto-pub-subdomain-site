@@ -48,37 +48,77 @@
         <!-- Options -->
         <div id="options-container">
           <div id="options">
-            <div class="list-grid-control-container">
+            <!-- List / Grid Control -->
+            <div id="list-grid-control-container">
               <div
                 id="list-grid-control"
-                class="list-grid-control"
                 role="button"
                 tabindex="0"
                 aria-pressed="true"
               >
-                <div class="list-grid-control-list">&nbsp;</div>
-                <div class="list-grid-control-grid">&nbsp;</div>
+                <div id="list-grid-control-list">&nbsp;</div>
+                <div id="list-grid-control-grid">&nbsp;</div>
                 <div
                   class="list-grid-control-indicator list-grid-control-indicator-right"
                 ></div>
               </div>
             </div>
 
-            <div class="sorting-control-container">
-              <div
-                id="sorting-control"
-                class="sorting-control"
-                role="button"
-                tabindex="1"
-                aria-pressed="true"
-              >
-                <div class="sorting-control-ascending">&nbsp;</div>
-                <div class="sorting-control-descending">&nbsp;</div>
-                <div
-                  class="sorting-control-indicator sorting-control-indicator-right"
-                ></div>
+            <!-- Sorting -->
+            <div style="display: flex; align-items: center">
+              <div id="sorting-title">sort by:</div>
+              <div class="dropdown">
+                <button
+                  class="sorting-dropdown-menu-button"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div id="sorting-current-title">Newest</div>
+                  <div class="dropdown-toggle"></div>
+                </button>
+                <ul
+                  class="sorting-dropdown-menu dropdown-menu dropdown-menu-end"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li>
+                    <button
+                      id="button-sort-newest"
+                      class="sorting-menu-item dropdown-item"
+                    >
+                      <span class="sorting-title">Newest</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      id="button-sort-oldest"
+                      class="sorting-menu-item dropdown-item"
+                    >
+                      <span class="sorting-title">Oldest</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      id="button-sort-title"
+                      class="sorting-menu-item dropdown-item"
+                    >
+                      <span class="sorting-title">Title</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      id="button-sort-type"
+                      class="sorting-menu-item dropdown-item"
+                    >
+                      <span class="sorting-title">Type</span>
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>
+
+            <!--  -->
           </div>
         </div>
 

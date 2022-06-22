@@ -1,3 +1,6 @@
+// Conpiles a Handlebars template.
+const compileTemplate = (id) => Handlebars.compile($(`#${id}`).html());
+
 // Time divisions.
 const TIME_DIVISIONS = [
   { amount: 60, name: "seconds" },
@@ -61,4 +64,4 @@ function formatTimeAgo(date) {
 }
 
 // Exports.
-export { subdomain, createURL, formatTimeAgo, getSites };
+export { compileTemplate, subdomain, createURL, formatTimeAgo, getSites };
