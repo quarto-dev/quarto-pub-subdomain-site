@@ -22,11 +22,43 @@ $(document).ready(async () => {
   let speed = 200;
   let gridView = true;
 
-  // Load the sites.
+  // Load the sites. They come in sorted by created order descending.
   const sites = await getSites();
 
   // Set the title.
   $("#action-bar-name").text(subdomain);
+
+  const sortUpdatedTimestamp = (a, b) => {
+    const aUpdated = new Date(a.updated_timestamp);
+    const bUpdated = new Date(b.updated_timestamp);
+    if (aUpdated < bUpdated) {
+      return -1;
+    } else if (aUpdated > bUpdated) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  const sortTitle = (a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    } else if (a.title > b.title) {
+      return 1;
+    } else {
+      return sortUpdatedTimestamp(a, b);
+    }
+  };
+
+  const sortType = (a, b) => {
+    if (a.type < b.type) {
+      return -1;
+    } else if (a.type > b.type) {
+      return 1;
+    } else {
+      return sortTitle(a, b);
+    }
+  };
 
   // Add the sites.
   const addSites = (sortOrder) => {
@@ -40,8 +72,10 @@ $(document).ready(async () => {
         sortedSites = sites.slice().reverse();
         break;
       case SortOrder.Title:
+        sortedSites = sites.slice().sort(sortTitle);
         break;
       case SortOrder.Type:
+        sortedSites = sites.slice().sort(sortType);
         break;
     }
 
@@ -119,27 +153,21 @@ $(document).ready(async () => {
     .click(toggleListGridControlEventHandler);
 
   $("#button-sort-newest").click(() => {
-    console.log("Sort Newest");
     $("#sorting-current-title").text("Newest");
-    $("#sites-grid").empty();
-    $("#sites-list").empty();
-
     addSites(SortOrder.Newest);
   });
   $("#button-sort-oldest").click(() => {
-    console.log("Sort Oldest");
     $("#sorting-current-title").text("Oldest");
-    $("#sites-grid").empty();
-    $("#sites-list").empty();
     addSites(SortOrder.Oldest);
   });
   $("#button-sort-title").click(() => {
-    console.log("Sort Title");
     $("#sorting-current-title").text("Title");
+    addSites(SortOrder.Title);
   });
   $("#button-sort-type").click(() => {
     console.log("Sort Type");
     $("#sorting-current-title").text("Type");
+    addSites(SortOrder.Type);
   });
 
   // Hide the spinner and show the application.
