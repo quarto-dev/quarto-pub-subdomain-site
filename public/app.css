@@ -2,7 +2,7 @@
 :root {
   --quarto-blue: #3a78b1;
   --spinner-size: 5rem;
-  --sites-grid-column-gap: 1.25rem;
+  --sites-grid-column-gap: 1.5rem;
 
   --site-grid-entry-width: 21.5rem;
   --site-grid-entry-screenshot-height: calc(
