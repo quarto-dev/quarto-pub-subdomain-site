@@ -20,23 +20,27 @@ $(document).ready(async () => {
   $("#action-bar-name").text(subdomain);
 
   // Add the sites.
-  for (const site of sites) {
-    // Append the site to the sites grid.
-    $("#sites-grid").append(
-      gridSiteTemplate({
-        ...site,
-        last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
-      })
-    );
+  const addSites = (reverse = false) => {
+    for (const site of reverse ? sites.slice().reverse() : sites) {
+      // Append the site to the sites grid.
+      $("#sites-grid").append(
+        gridSiteTemplate({
+          ...site,
+          last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
+        })
+      );
 
-    // // Append the site to the sites list.
-    $("#sites-list").append(
-      listSiteTemplate({
-        ...site,
-        last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
-      })
-    );
-  }
+      // // Append the site to the sites list.
+      $("#sites-list").append(
+        listSiteTemplate({
+          ...site,
+          last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
+        })
+      );
+    }
+  };
+
+  addSites();
 
   // Toggle list / grid control event handler.
   const toggleListGridControlEventHandler = (event) => {
@@ -94,11 +98,20 @@ $(document).ready(async () => {
       $(".sorting-control-indicator").addClass(
         "sorting-control-indicator-right"
       );
+
+      $("#sites-grid").empty();
+      $("#sites-list").empty();
+
+      addSites();
     } else {
       // Update the indicator.
       $(".sorting-control-indicator").removeClass(
         "sorting-control-indicator-right"
       );
+      $("#sites-grid").empty();
+      $("#sites-list").empty();
+
+      addSites(true);
     }
   };
 
