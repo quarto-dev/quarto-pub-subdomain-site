@@ -11,6 +11,7 @@ $(document).ready(async () => {
   let fade = true;
   let speed = 200;
   let gridView = true;
+  let sortDescending = true;
 
   // Load the sites.
   const sites = await getSites();
@@ -78,10 +79,36 @@ $(document).ready(async () => {
     }
   };
 
+  // Toggle sorting control event handler.
+  const toggleSortingControlEventHandler = (event) => {
+    // Reject keyboard events that are not supported.
+    if (event.originalEvent instanceof KeyboardEvent) {
+      if (!(event.code == "Space" || event.code == "Enter")) {
+        return;
+      }
+    }
+
+    // Toggle the sorting control.
+    if ((sortDescending = !sortDescending)) {
+      // Update the indicator.
+      $(".sorting-control-indicator").addClass(
+        "sorting-control-indicator-right"
+      );
+    } else {
+      // Update the indicator.
+      $(".sorting-control-indicator").removeClass(
+        "sorting-control-indicator-right"
+      );
+    }
+  };
+
   // Add event handlers.
   $("#list-grid-control")
     .keydown(toggleListGridControlEventHandler)
     .click(toggleListGridControlEventHandler);
+  $("#sorting-control")
+    .keydown(toggleSortingControlEventHandler)
+    .click(toggleSortingControlEventHandler);
 
   // Hide the spinner and show the application.
   $("#loading-spinner").hide();

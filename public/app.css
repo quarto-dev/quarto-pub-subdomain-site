@@ -47,6 +47,7 @@ body {
   }
 }
 
+/* Application */
 #application {
   display: none;
 }
@@ -116,10 +117,12 @@ img#quarto-pub-logo-icon {
 #options {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 4rem;
 }
 
+/* List / Grid Control */
 .list-grid-control-container {
   cursor: pointer;
   user-select: none;
@@ -179,6 +182,69 @@ img#quarto-pub-logo-icon {
 
 .list-grid-control-indicator-right {
   background-image: url("./grid-white.png");
+  margin-left: 1.5rem;
+}
+
+/* Sorting Control */
+.sorting-control-container {
+  cursor: pointer;
+  user-select: none;
+  background: #e4eaf2;
+  padding: calc(0.125rem / 2);
+  border-radius: 0.25rem;
+  height: calc(1.5rem + 0.125rem);
+  position: relative;
+  width: calc(3rem + 0.125rem);
+}
+
+.sorting-control {
+  background: #e4eaf2;
+  border-radius: 0.25rem;
+  height: 1.5rem;
+  position: relative;
+  width: 3rem;
+}
+
+.sorting-control-ascending {
+  position: absolute;
+  right: 0;
+  width: 1.5rem;
+  display: flex;
+  background-image: url("./sort-descending-blue.png");
+  background-size: 0.75rem 0.75rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sorting-control-descending {
+  position: absolute;
+  left: 0;
+  width: 1.5rem;
+  display: flex;
+  background-image: url("./sort-ascending-blue.png");
+  background-size: 0.75rem 0.75rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sorting-control-indicator {
+  position: absolute;
+  width: 1.5rem;
+  display: flex;
+  height: 1.5rem;
+  background: #4e78b1;
+  border-radius: 0.25rem;
+  background-image: url("./sort-ascending-white.png");
+  background-color: #4e78b1;
+  background-size: 0.75rem 0.75rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.25s ease 0s;
+  transition: margin-left 0.25s ease 0s;
+}
+
+.sorting-control-indicator-right {
+  background-image: url("./sort-descending-white.png");
   margin-left: 1.5rem;
 }
 
