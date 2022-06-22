@@ -8,7 +8,8 @@ $(document).ready(async () => {
   var listSiteTemplate = compileTemplate("site-list-entry-template");
 
   // State.
-  let fade = false;
+  let fade = true;
+  let speed = 200;
   let gridView = true;
 
   // Load the sites.
@@ -27,7 +28,7 @@ $(document).ready(async () => {
       })
     );
 
-    // Append the site to the sites list.
+    // // Append the site to the sites list.
     $("#sites-list").append(
       listSiteTemplate({
         ...site,
@@ -54,8 +55,8 @@ $(document).ready(async () => {
 
       // Switch view.
       if (fade) {
-        $("#sites-list-container").fadeOut();
-        $("#sites-grid-container").fadeIn();
+        $("#sites-list-container").fadeOut(speed);
+        $("#sites-grid-container").fadeIn(speed);
       } else {
         $("#sites-list-container").hide();
         $("#sites-grid-container").show();
@@ -68,8 +69,8 @@ $(document).ready(async () => {
 
       // Switch view.
       if (fade) {
-        $("#sites-grid-container").fadeOut();
-        $("#sites-list-container").fadeIn();
+        $("#sites-grid-container").fadeOut(speed);
+        $("#sites-list-container").fadeIn(speed);
       } else {
         $("#sites-grid-container").hide();
         $("#sites-list-container").show();

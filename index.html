@@ -25,7 +25,7 @@
       <!-- Header -->
       <div id="header">
         <div id="action-bar">
-          <div id="action-bar-logo">
+          <div>
             <a id="quarto-pub-logo" href="https://quartopub.org">
               <img
                 id="quarto-pub-logo-icon"
@@ -73,6 +73,12 @@
 
         <!-- Sites List -->
         <div id="sites-list-container">
+          <div id="sites-list-header">
+            <div></div>
+            <div>Title</div>
+            <div>Type</div>
+            <div>Last Updated</div>
+          </div>
           <div id="sites-list"></div>
         </div>
       </div>
@@ -107,9 +113,9 @@
         <a href="{{site_url}}">
           <img class="site-list-entry-screenshot" src="{{screenshot_url}}" />
         </a>
-        {{title}}
-        {{type}}
-        {{last_updated}}
+        <div class="site-list-entry-title">{{title}}</div>
+        <div class="site-list-entry-type">{{type}}</div>
+        <div class="site-list-entry-last-updated">{{last_updated}}</div>
       </div>
     </script>
 
