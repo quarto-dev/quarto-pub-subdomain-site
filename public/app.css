@@ -296,6 +296,7 @@ span.site-grid-entry-updated-time {
 
 /* Sites List */
 #sites-list-header-container {
+  display: none;
   position: fixed;
   top: 8rem;
   height: 2rem;
@@ -309,7 +310,7 @@ span.site-grid-entry-updated-time {
   color: #777;
   display: grid;
   font-size: 0.85rem;
-  grid-template-columns: 8rem 12rem 12rem 12rem;
+  grid-template-columns: 8rem 1fr 12rem 12rem;
   border-bottom: 1px solid #777;
   width: var(--wrapper-width);
 }
@@ -339,7 +340,7 @@ span.site-grid-entry-updated-time {
 
 .site-list-entry {
   display: grid;
-  grid-template-columns: 8rem 12rem 12rem 12rem;
+  grid-template-columns: 8rem 1fr 12rem 12rem;
   align-items: center;
   row-gap: 1rempx;
 }

@@ -36,6 +36,8 @@ $(document).ready(async () => {
 
   // Load the sites. They come in sorted by updated order descending.
   const sites = await getSites();
+  // let sites = await getSites();
+  // sites = sites.slice(10);
 
   // Set the title.
   $("#action-bar-name").text(subdomain);
@@ -43,19 +45,19 @@ $(document).ready(async () => {
   // Add the sites.
   const addSites = (sortOrder) => {
     // Sort the sites.
-    let sortedSites;
+    let sortedSites = sites.slice();
     switch (sortOrder) {
       case SortOrder.Newest:
-        sortedSites = sites.slice().sort(sortSitesByUpdatedTimestampDescending);
+        sortedSites.sort(sortSitesByUpdatedTimestampDescending);
         break;
       case SortOrder.Oldest:
-        sortedSites = sites.slice().sort(sortSitesByUpdatedTimestampAscending);
+        sortedSites.sort(sortSitesByUpdatedTimestampAscending);
         break;
       case SortOrder.Title:
-        sortedSites = sites.slice().sort(sortSitesByTitle);
+        sortedSites.sort(sortSitesByTitle);
         break;
       case SortOrder.Type:
-        sortedSites = sites.slice().sort(sortSitesByType);
+        sortedSites.sort(sortSitesByType);
         break;
     }
 
@@ -104,9 +106,11 @@ $(document).ready(async () => {
 
       // Switch view.
       if (fade) {
+        $("#sites-list-header-container").fadeOut(speed);
         $("#sites-list-container").fadeOut(speed);
         $("#sites-grid-container").fadeIn(speed);
       } else {
+        $("#sites-list-header-container").hide();
         $("#sites-list-container").hide();
         $("#sites-grid-container").show();
       }
@@ -119,9 +123,11 @@ $(document).ready(async () => {
       // Switch view.
       if (fade) {
         $("#sites-grid-container").fadeOut(speed);
+        $("#sites-list-header-container").fadeIn(speed);
         $("#sites-list-container").fadeIn(speed);
       } else {
         $("#sites-grid-container").hide();
+        $("#sites-list-header-container").show();
         $("#sites-list-container").show();
       }
     }
