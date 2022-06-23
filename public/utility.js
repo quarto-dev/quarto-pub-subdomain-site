@@ -1,5 +1,5 @@
-// Conpiles a Handlebars template.
-const compileTemplate = (id) => Handlebars.compile($(`#${id}`).html());
+// Get the search parameters.
+const searchParams = new URLSearchParams(window.location.search);
 
 // Time divisions.
 const TIME_DIVISIONS = [
@@ -12,6 +12,9 @@ const TIME_DIVISIONS = [
   { amount: Number.POSITIVE_INFINITY, name: "years" },
 ];
 
+// Conpiles a Handlebars template.
+const compileTemplate = (id) => Handlebars.compile($(`#${id}`).html());
+
 // The relative time formatter.
 const relativeTimeFormat = new Intl.RelativeTimeFormat(undefined, {
   numeric: "auto",
@@ -19,15 +22,21 @@ const relativeTimeFormat = new Intl.RelativeTimeFormat(undefined, {
 
 // Gets the subdomain.
 const getSubdomain = () => {
+  // In production, use the subdomain from the hostname.
   if (window.location.hostname) {
     const parts = window.location.hostname.split(".");
     if (parts.length === 3) {
       return parts[0];
     }
   }
-  const params = new URLSearchParams(window.location.search);
-  return params.get("subdomain");
+
+  // In test, use the subdomain search parameter.
+  return searchParams.get("subdomain");
 };
+
+// Gets the limit.
+const getLimit = () =>
+  parseInt(searchParams.get("limit")) || Number.MAX_SAFE_INTEGER;
 
 // The subdomain.
 const subdomain = getSubdomain();
@@ -64,4 +73,11 @@ function formatTimeAgo(date) {
 }
 
 // Exports.
-export { compileTemplate, subdomain, createURL, formatTimeAgo, getSites };
+export {
+  compileTemplate,
+  createURL,
+  formatTimeAgo,
+  getLimit,
+  getSites,
+  subdomain,
+};

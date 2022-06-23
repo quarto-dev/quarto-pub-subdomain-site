@@ -1,6 +1,7 @@
 import {
   compileTemplate,
   formatTimeAgo,
+  getLimit,
   getSites,
   subdomain,
 } from "./utility.js";
@@ -42,8 +43,6 @@ $(document).ready(async () => {
 
   // Load the sites. They come in sorted by updated order descending.
   const sites = await getSites();
-  // let sites = await getSites();
-  // sites = sites.slice(10);
 
   // Set the title.
   $("#action-bar-name").text(subdomain);
@@ -51,7 +50,7 @@ $(document).ready(async () => {
   // Add the sites.
   const addSites = (sortOrder) => {
     // Sort the sites.
-    let sortedSites = sites.slice();
+    let sortedSites = sites.slice(0, getLimit());
     switch (sortOrder) {
       case SortOrder.Newest:
         sortedSites.sort(sortSitesByUpdatedTimestampDescending);
