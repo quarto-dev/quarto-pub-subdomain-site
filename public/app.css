@@ -2,20 +2,16 @@
 :root {
   --quarto-blue: #3a78b1;
   --spinner-size: 5rem;
-
   --sites-grid-columns: 0;
   --sites-grid-column-gap: 1.5rem;
-
   --site-grid-entry-width: 21.5rem;
   --site-grid-entry-screenshot-height: calc(
     9 * var(--site-grid-entry-width) / 16
   );
-
   --site-list-entry-width: 6rem;
   --site-list-entry-screenshot-height: calc(
     9 * var(--site-list-entry-width) / 16
   );
-
   --wrapper-width: 0;
 }
 
@@ -299,6 +295,15 @@ span.site-grid-entry-updated-time {
 }
 
 /* Sites List */
+#sites-list-header-container {
+  position: fixed;
+  top: 8rem;
+  height: 2rem;
+  left: 50%;
+  transform: translate(-50%);
+  width: var(--wrapper-width);
+}
+
 #sites-list-header {
   height: 1.75rem;
   color: #777;
@@ -306,14 +311,16 @@ span.site-grid-entry-updated-time {
   font-size: 0.85rem;
   grid-template-columns: 8rem 12rem 12rem 12rem;
   border-bottom: 1px solid #777;
+  width: var(--wrapper-width);
 }
 
 #sites-list-container {
   display: none;
   overflow-y: scroll;
   position: fixed;
-  top: 7.25rem;
-  padding-top: 0.75rem;
+  top: 10rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
   width: 100%;
   bottom: 0;
 }
@@ -373,10 +380,6 @@ span.site-grid-entry-updated-time {
   #action-bar-name {
     justify-content: right;
   }
-
-  #sites-list-header {
-    width: var(--site-grid-entry-width);
-  }
 }
 
 /* Normal */
@@ -395,12 +398,6 @@ span.site-grid-entry-updated-time {
   #action-bar-name {
     justify-content: center;
   }
-
-  #sites-list-header {
-    width: calc(
-      (var(--site-grid-entry-width) * 2) + var(--sites-grid-column-gap)
-    );
-  }
 }
 
 /* Wide */
@@ -411,12 +408,6 @@ span.site-grid-entry-updated-time {
       (var(--site-grid-entry-width) * 3) + (var(--sites-grid-column-gap) * 2)
     );
   }
-
-  #sites-list-header {
-    width: calc(
-      (var(--site-grid-entry-width) * 3) + (var(--sites-grid-column-gap) * 2)
-    );
-  }
 }
 
 /* Ultrawide */
@@ -424,12 +415,6 @@ span.site-grid-entry-updated-time {
   :root {
     --sites-grid-columns: 4;
     --wrapper-width: calc(
-      (var(--site-grid-entry-width) * 4) + (var(--sites-grid-column-gap) * 3)
-    );
-  }
-
-  #sites-list-header {
-    width: calc(
       (var(--site-grid-entry-width) * 4) + (var(--sites-grid-column-gap) * 3)
     );
   }
