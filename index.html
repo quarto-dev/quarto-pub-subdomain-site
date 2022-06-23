@@ -128,28 +128,23 @@
           <div id="sites-grid-wrapper">
             <div id="sites-grid"></div>
           </div>
-          <footer style="width: 100%; height: 2rem; background: red">
-            Goi
-          </footer>
         </div>
 
-        <!-- Sites List -->
+        <!-- Sites List Header -->
         <div id="sites-list-header-container">
           <div id="sites-list-header">
             <div>Preview</div>
             <div>Title</div>
             <div>Type</div>
-            <div>Last Updated</div>
+            <div style="text-align: right">Last Updated</div>
           </div>
         </div>
 
+        <!-- Sites List -->
         <div id="sites-list-container">
           <div id="sites-list-wrapper">
             <div id="sites-list"></div>
           </div>
-          <footer style="width: 100%; height: 2rem; background: red">
-            Goi
-          </footer>
         </div>
       </main>
     </div>
@@ -185,8 +180,38 @@
         </a>
         <div class="site-list-entry-title">{{title}}</div>
         <div class="site-list-entry-type">{{type}}</div>
-        <div class="site-list-entry-last-updated">{{last_updated}}</div>
+        <div
+          class="site-list-entry-last-updated"
+          style="text-align: right;"
+        >{{last_updated}}</div>
       </div>
+    </script>
+
+    <!-- Footer Template -->
+    <script id="footer-template" type="text/x-handlebars-template">
+      <footer class="footer">
+        <div class="footer-foo">
+          <div>
+            Copyright ©
+            {{year}}
+            <a
+              class="footer-legal-link"
+              href="https://www.rstudio.com/"
+            >RStudio, PBC.</a>
+            All Rights Reserved.
+
+          </div>
+          <a
+            class="lefty-margin footer-legal-link"
+            href="https://www.rstudio.com/about/rstudio-service-terms-of-use/"
+          >Terms of Use</a>
+          <a
+            class="lefty-margin footer-legal-link"
+            href="https://www.rstudio.com/about/privacy-policy/"
+          >Privacy Policy</a>
+        </div>
+
+      </footer>
     </script>
 
     <!-- Bootstrap -->

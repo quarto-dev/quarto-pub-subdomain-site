@@ -28,11 +28,17 @@ $(document).ready(async () => {
   // Load templates.
   var siteGridEntryTemplate = compileTemplate("site-grid-entry-template");
   var siteListEntryTemplate = compileTemplate("site-list-entry-template");
+  var footerTemplate = compileTemplate("footer-template");
 
   // State.
   let fade = true;
   let speed = 200;
   let gridView = true;
+
+  // Append the footers.
+  const dd = footerTemplate({ year: new Date().getFullYear() });
+  $("#sites-grid-container").append(dd);
+  $("#sites-list-container").append(dd);
 
   // Load the sites. They come in sorted by updated order descending.
   const sites = await getSites();
