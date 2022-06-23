@@ -2,6 +2,8 @@
 :root {
   --quarto-blue: #3a78b1;
   --spinner-size: 5rem;
+
+  /* Site Grid Variables */
   --sites-grid-columns: 0;
   --sites-grid-column-gap: 1.5rem;
   --site-grid-entry-width: 21.5rem;
@@ -9,13 +11,19 @@
     9 * var(--site-grid-entry-width) / 16
   );
 
-  --site-list-entry-width: 6rem;
+  /* Site List Variables */
+  ----site-list-entry-screenshot-width: 6rem;
   --site-list-entry-screenshot-height: calc(
-    9 * var(--site-list-entry-width) / 16
+    9 * var(----site-list-entry-screenshot-width) / 16
   );
+  --site-list-title-text-align: 0;
   --site-list-columns: 0;
   --site-list-optional-column-display: 0;
+
+  /* Main Wrapper Width */
   --wrapper-width: 0;
+
+  /* Footer Variables */
   --footer-font-size: 0.85rem;
   --footer-legal-link-left-margin: 0;
   --copyright-word-display: none;
@@ -363,14 +371,19 @@ a.site-url:hover {
 
 .site-list-entry-screenshot {
   border: calc(0.125rem / 2) solid #ddd;
-  width: var(--site-list-entry-width);
+  width: var(----site-list-entry-screenshot-width);
   height: var(--site-list-entry-screenshot-height);
   box-shadow: 2px 2px 19px -15px #000000;
+}
+
+.site-list-title-title {
+  text-align: var(--site-list-title-text-align);
 }
 
 .site-list-entry-title {
   color: var(--quarto-blue);
   font-size: 0.85rem;
+  text-align: var(--site-list-title-text-align);
 }
 
 .site-list-title-type {
@@ -445,6 +458,7 @@ a.footer-legal-link {
     --sites-grid-columns: 1;
     --wrapper-width: var(--site-grid-entry-width);
     --site-list-columns: 8rem 1fr;
+    --site-list-title-text-align: right;
     --site-list-optional-column-display: none;
     --footer-font-size: 0.6rem;
     --footer-legal-link-left-margin: 1rem;
@@ -468,9 +482,10 @@ a.footer-legal-link {
       (var(--site-grid-entry-width) * 2) + var(--sites-grid-column-gap)
     );
     --site-list-columns: 8rem 1fr 12rem 8rem;
+    --site-list-title-text-align: left;
     --site-list-optional-column-display: inline;
     --footer-font-size: 0.85rem;
-    --footer-legal-link-left-margin: 1.75rem;
+    --footer-legal-link-left-margin: 1.5rem;
 
     --copyright-word-display: inline;
   }
