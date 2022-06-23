@@ -12,6 +12,18 @@ const SortOrder = {
   Type: "type",
 };
 
+const sortSitesByUpdatedTimestampAscending = (a, b) =>
+  new Date(a.updated_timestamp) - new Date(b.updated_timestamp);
+
+const sortSitesByUpdatedTimestampDescending = (a, b) =>
+  new Date(b.updated_timestamp) - new Date(a.updated_timestamp);
+
+const sortSitesByTitle = (a, b) =>
+  a.title.localeCompare(b.title) || sortSitesByUpdatedTimestampDescending(a, b);
+
+const sortSitesByType = (a, b) =>
+  a.type.localeCompare(b.type) || sortSitesByUpdatedTimestampDescending(a, b);
+
 $(document).ready(async () => {
   // Load templates.
   var gridSiteTemplate = compileTemplate("site-grid-entry-template");
@@ -22,43 +34,11 @@ $(document).ready(async () => {
   let speed = 200;
   let gridView = true;
 
-  // Load the sites. They come in sorted by created order descending.
+  // Load the sites. They come in sorted by updated order descending.
   const sites = await getSites();
 
   // Set the title.
   $("#action-bar-name").text(subdomain);
-
-  const sortUpdatedTimestamp = (a, b) => {
-    const aUpdated = new Date(a.updated_timestamp);
-    const bUpdated = new Date(b.updated_timestamp);
-    if (aUpdated < bUpdated) {
-      return -1;
-    } else if (aUpdated > bUpdated) {
-      return 1;
-    } else {
-      return 0;
-    }
-  };
-
-  const sortTitle = (a, b) => {
-    if (a.title < b.title) {
-      return -1;
-    } else if (a.title > b.title) {
-      return 1;
-    } else {
-      return sortUpdatedTimestamp(a, b);
-    }
-  };
-
-  const sortType = (a, b) => {
-    if (a.type < b.type) {
-      return -1;
-    } else if (a.type > b.type) {
-      return 1;
-    } else {
-      return sortTitle(a, b);
-    }
-  };
 
   // Add the sites.
   const addSites = (sortOrder) => {
@@ -66,16 +46,16 @@ $(document).ready(async () => {
     let sortedSites;
     switch (sortOrder) {
       case SortOrder.Newest:
-        sortedSites = sites;
+        sortedSites = sites.slice().sort(sortSitesByUpdatedTimestampDescending);
         break;
       case SortOrder.Oldest:
-        sortedSites = sites.slice().reverse();
+        sortedSites = sites.slice().sort(sortSitesByUpdatedTimestampAscending);
         break;
       case SortOrder.Title:
-        sortedSites = sites.slice().sort(sortTitle);
+        sortedSites = sites.slice().sort(sortSitesByTitle);
         break;
       case SortOrder.Type:
-        sortedSites = sites.slice().sort(sortType);
+        sortedSites = sites.slice().sort(sortSitesByType);
         break;
     }
 

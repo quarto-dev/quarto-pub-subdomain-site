@@ -192,19 +192,8 @@ img#quarto-pub-logo-icon {
   margin-right: 0.25rem;
 }
 
-#sorting-dropdown {
-}
-
 .sorting-dropdown-menu {
   padding: 0 0;
-}
-
-.yaya {
-  background: red;
-  display: flex;
-  justify-content: flex-end;
-  /* background: red; */
-  /* margin-right: 1rem; */
 }
 
 .sorting-dropdown-menu-button {
@@ -253,16 +242,18 @@ span.sorting-title {
   overflow-y: scroll;
   position: fixed;
   top: 7.25rem;
-  padding-left: 20px;
-  padding-right: 20px;
-  left: 50%;
-  transform: translate(-50%);
   padding-top: 0.75rem;
+  width: 100%;
   bottom: 0;
 }
 
+#sites-grid-yacko {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
 #sites-grid {
-  height: 100%;
   display: grid;
   column-gap: var(--sites-grid-column-gap);
 }
@@ -370,8 +361,10 @@ span.site-grid-entry-updated-time {
   #options {
     width: var(--site-grid-entry-width);
   }
-  #sites-grid {
+  #sites-grid-yacko {
     width: var(--site-grid-entry-width);
+  }
+  #sites-grid {
     grid-template-columns: var(--site-grid-entry-width);
   }
   #sites-list-header {
@@ -396,10 +389,12 @@ span.site-grid-entry-updated-time {
       (var(--site-grid-entry-width) * 2) + var(--sites-grid-column-gap)
     );
   }
-  #sites-grid {
+  #sites-grid-yacko {
     width: calc(
       (var(--site-grid-entry-width) * 2) + var(--sites-grid-column-gap)
     );
+  }
+  #sites-grid {
     grid-template-columns: repeat(2, var(--site-grid-entry-width));
   }
   #sites-list-header {
@@ -421,10 +416,12 @@ span.site-grid-entry-updated-time {
       (var(--site-grid-entry-width) * 3) + (var(--sites-grid-column-gap) * 2)
     );
   }
-  #sites-grid {
+  #sites-grid-yacko {
     width: calc(
       (var(--site-grid-entry-width) * 3) + (var(--sites-grid-column-gap) * 2)
     );
+  }
+  #sites-grid {
     grid-template-columns: repeat(3, var(--site-grid-entry-width));
   }
   #sites-list-header {
@@ -446,10 +443,12 @@ span.site-grid-entry-updated-time {
       (var(--site-grid-entry-width) * 4) + (var(--sites-grid-column-gap) * 3)
     );
   }
-  #sites-grid {
+  #sites-grid-yacko {
     width: calc(
       (var(--site-grid-entry-width) * 4) + (var(--sites-grid-column-gap) * 3)
     );
+  }
+  #sites-grid {
     grid-template-columns: repeat(4, var(--site-grid-entry-width));
   }
   #sites-list-header {
