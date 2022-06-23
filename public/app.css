@@ -300,6 +300,15 @@ span.site-grid-entry-updated-time {
   color: #777;
 }
 
+a.site-url {
+  color: var(--quarto-blue);
+  text-decoration: none;
+}
+
+a.site-url:hover {
+  text-decoration: underline;
+}
+
 /* Sites List */
 #sites-list-header-container {
   display: none;

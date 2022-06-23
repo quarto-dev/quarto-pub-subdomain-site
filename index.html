@@ -160,7 +160,11 @@
           <div class="row mt-2">
             <div
               class="col site-grid-entry-title left p-0 d-flex justify-content-start"
-            >{{title}}</div>
+            >
+              <a class="site-url" href="{{site_url}}">
+                {{title}}
+              </a>
+            </div>
             <div
               class="col site-grid-entry-type right p-0 d-flex justify-content-end"
             >{{type}}</div>
@@ -179,7 +183,9 @@
         <a href="{{site_url}}">
           <img class="site-list-entry-screenshot" src="{{screenshot_url}}" />
         </a>
-        <div class="site-list-entry-title">{{title}}</div>
+        <a class="site-url" href="{{site_url}}">
+          <div class="site-list-entry-title">{{title}}</div>
+        </a>
         <div class="site-list-entry-type">{{type}}</div>
         <div
           class="site-list-entry-last-updated"
