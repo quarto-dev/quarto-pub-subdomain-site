@@ -8,11 +8,16 @@
   --site-grid-entry-screenshot-height: calc(
     9 * var(--site-grid-entry-width) / 16
   );
+
   --site-list-entry-width: 6rem;
   --site-list-entry-screenshot-height: calc(
     9 * var(--site-list-entry-width) / 16
   );
+  --site-list-columns: 0;
+  --site-list-optional-column-display: 0;
   --wrapper-width: 0;
+  --footer-font-size: 0.85rem;
+  --copyright-word-display: none;
 }
 
 /* Body */
@@ -311,7 +316,7 @@ span.site-grid-entry-updated-time {
   color: #777;
   display: grid;
   font-size: 0.85rem;
-  grid-template-columns: 8rem 1fr 12rem 8rem;
+  grid-template-columns: var(--site-list-columns);
   border-bottom: 1px solid #777;
   width: var(--wrapper-width);
 }
@@ -341,7 +346,7 @@ span.site-grid-entry-updated-time {
 
 .site-list-entry {
   display: grid;
-  grid-template-columns: 8rem 1fr 12rem 8rem;
+  grid-template-columns: var(--site-list-columns);
   align-items: center;
   row-gap: 1rempx;
 }
@@ -358,14 +363,30 @@ span.site-grid-entry-updated-time {
   font-size: 0.85rem;
 }
 
-.site-list-entry-type {
+.site-list-title-type {
+  display: var(--site-list-optional-column-display);
   color: var(--quarto-blue);
   font-size: 0.85rem;
 }
 
-.site-list-entry-last-updated {
+.site-list-entry-type {
+  display: var(--site-list-optional-column-display);
+  color: var(--quarto-blue);
+  font-size: 0.85rem;
+}
+
+.site-list-title-last-updated {
+  display: var(--site-list-optional-column-display);
   color: #777;
   font-size: 0.85rem;
+  text-align: right;
+}
+
+.site-list-entry-last-updated {
+  display: var(--site-list-optional-column-display);
+  color: #777;
+  font-size: 0.85rem;
+  text-align: right;
 }
 
 .footer {
@@ -375,7 +396,7 @@ span.site-grid-entry-updated-time {
   display: flex;
   align-items: center;
   color: #777;
-  font-size: 0.85rem;
+  font-size: var(--footer-font-size);
 }
 
 .footer-foo {
@@ -386,8 +407,12 @@ span.site-grid-entry-updated-time {
   transform: translate(-50%);
 }
 
+span.copyright-word {
+  display: var(--copyright-word-display);
+}
+
 .lefty-margin {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 a.footer-legal-link {
@@ -405,6 +430,10 @@ a.footer-legal-link:hover {
   :root {
     --sites-grid-columns: 1;
     --wrapper-width: var(--site-grid-entry-width);
+    --site-list-columns: 8rem 1fr;
+    --site-list-optional-column-display: none;
+    --footer-font-size: 0.6rem;
+    --copyright-word-display: none;
   }
 
   #action-bar {
@@ -423,6 +452,10 @@ a.footer-legal-link:hover {
     --wrapper-width: calc(
       (var(--site-grid-entry-width) * 2) + var(--sites-grid-column-gap)
     );
+    --site-list-columns: 8rem 1fr 12rem 8rem;
+    --site-list-optional-column-display: inline;
+    --footer-font-size: 0.85rem;
+    --copyright-word-display: inline;
   }
 
   #action-bar {
