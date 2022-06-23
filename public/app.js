@@ -26,8 +26,8 @@ const sortSitesByType = (a, b) =>
 
 $(document).ready(async () => {
   // Load templates.
-  var gridSiteTemplate = compileTemplate("site-grid-entry-template");
-  var listSiteTemplate = compileTemplate("site-list-entry-template");
+  var siteGridEntryTemplate = compileTemplate("site-grid-entry-template");
+  var siteListEntryTemplate = compileTemplate("site-list-entry-template");
 
   // State.
   let fade = true;
@@ -67,7 +67,7 @@ $(document).ready(async () => {
     for (const site of sortedSites) {
       // Append the site to the sites grid.
       $("#sites-grid").append(
-        gridSiteTemplate({
+        siteGridEntryTemplate({
           ...site,
           last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
         })
@@ -75,7 +75,7 @@ $(document).ready(async () => {
 
       // // Append the site to the sites list.
       $("#sites-list").append(
-        listSiteTemplate({
+        siteListEntryTemplate({
           ...site,
           last_updated: formatTimeAgo(new Date(site.updated_timestamp)),
         })
