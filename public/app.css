@@ -253,6 +253,7 @@ span.sorting-title {
 #sites-grid-wrapper {
   position: relative;
   left: 50%;
+  min-height: 100%;
   transform: translate(-50%);
   width: var(--wrapper-width);
 }
@@ -320,8 +321,6 @@ span.site-grid-entry-updated-time {
   overflow-y: scroll;
   position: fixed;
   top: 10rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
   width: 100%;
   bottom: 0;
 }
@@ -329,6 +328,8 @@ span.site-grid-entry-updated-time {
 #sites-list-wrapper {
   position: relative;
   left: 50%;
+  min-height: 100%;
+
   transform: translate(-50%);
   width: var(--wrapper-width);
 }
