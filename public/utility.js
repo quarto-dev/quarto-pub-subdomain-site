@@ -44,7 +44,7 @@ const subdomain = getSubdomain();
 // The base URL.
 const baseURL =
   window.location.protocol === "https:"
-    ? `https://quartopub.org/api/v1/subdomains/${subdomain}`
+    ? `https://quartopub.com/api/v1/subdomains/${subdomain}`
     : `http://127.0.0.1:3000/api/v1/subdomains/${subdomain}`;
 
 // Create a URL.
